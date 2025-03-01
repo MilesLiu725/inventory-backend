@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PartsModule } from './parts/parts.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { PartsModule } from './parts/parts.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    OrdersModule,
     PartsModule, // 确保 PartsModule 被正确引入
   ],
 })
