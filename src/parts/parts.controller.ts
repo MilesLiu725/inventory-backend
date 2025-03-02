@@ -1,9 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 
-@Controller('parts')  // 这里必须指定 'parts'
+@Controller('parts')
 export class PartsController {
+  private parts = [];
+
   @Get()
-  findAll() {
-    return { message: 'Parts API is working!', status: 'success' };
+  getParts() {
+    return this.parts;
+  }
+
+  @Post()
+  addPart(@Body() part) {
+    this.parts.push(part);
+    return { message: 'Part added successfully', part };
   }
 }
